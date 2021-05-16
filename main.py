@@ -1,31 +1,34 @@
-names = ("Franek","Marek","Zbyszek","Asia","Basia","Kasia",)
-surnames = ("Banach", "Currie", "Kowalski", "Studencki")
+class Basic:
+    def __init__(self, field):
+        self.field = field
+    def __str__(self):
+        return "basic {x}".format(x=self.field)
+    def print_field(self):
+        return print(self.field)
+    def __gt__(self, other):
+        return self.field>other.field
 
-def looks_like_polish_surname(s):
-    polish_suffixes= ("ski","cki")
-    for each in polish_suffixes:
-        if s.endswith(each):
-            return True
-    return False
+class X:
+    def __init__(self, field):
+        self.field = field
 
-for each in names:
-    if each[-1] =='a':
-        print (each)
-
-for each in surnames:
-    if looks_like_polish_surname(each):
-        print (each)
-
-people = []
-
-for i in names:
-    for j in surnames:
-        if i[-1] == 'a' and looks_like_polish_surname(j):
-            j=j[:-1] + 'a'
-        people.append((i,j))
-
-for each in people:
-    print (each)
+def print_field(x):
+    return print(x.field)
 
 
+c = Basic(-5)
+b = Basic(10)
+x=X("Hello")
 
+print(b)
+b.print_field()
+
+print (c>b)
+print (c<b)
+print (c==b)
+
+print_field(b)
+b.print_field()
+Basic.print_field(b)
+print_field(x)
+Basic.print_field(x)
